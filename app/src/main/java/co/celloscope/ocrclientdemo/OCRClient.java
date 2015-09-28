@@ -72,7 +72,7 @@ public class OCRClient {
 
     void doBindService() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("co.celloscope.ocrservice", "co.celloscope.ocrservice.OCRService"));
+        intent.setComponent(new ComponentName("co.celloscope.ocrservicehost", "co.celloscope.ocrservicehost.OCRService"));
         mContextWrapper.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
         mIsBound = true;
     }
