@@ -26,6 +26,8 @@ public class OCRClient {
 
     final Messenger mClient = new Messenger(new IncomingHandler());
     private final ContextWrapper mContextWrapper;
+    private final String servicePackageName = "com.ael.celloscope.aelcelloscopeocr.ocr";
+    private final String servceFullyQualifiedClassName = "com.ael.celloscope.aelcelloscopeocr.ocr.OCRService";
 
 
     Messenger mService = null;
@@ -78,7 +80,7 @@ public class OCRClient {
 
     void doBindService() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("co.celloscope.ocrservicehost", "co.celloscope.ocrservicehost.OCRService"));
+        intent.setComponent(new ComponentName(servicePackageName, servceFullyQualifiedClassName));
         mContextWrapper.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
         mIsBound = true;
     }
