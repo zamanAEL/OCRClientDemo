@@ -78,7 +78,7 @@ public class OCRClient {
 
     void doBindService() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName(mContextWrapper.getResources().getString(R.string.servicePackageName), mContextWrapper.getResources().getString(R.string.servceFullyQualifiedClassName)));
+        intent.setComponent(new ComponentName(mContextWrapper.getResources().getString(R.string.servicePackageName), mContextWrapper.getResources().getString(R.string.serviceFullyQualifiedClassName)));
         mContextWrapper.bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
         mIsBound = true;
     }

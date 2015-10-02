@@ -6,7 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class Client extends AppCompatActivity {
+public class OCRClientActivity extends AppCompatActivity {
 
     TextView mCallbackText;
     private OCRClient mOcrClient;
