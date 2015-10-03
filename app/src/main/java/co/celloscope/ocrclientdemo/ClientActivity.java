@@ -6,18 +6,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class OCRClientActivity extends AppCompatActivity {
+public class ClientActivity extends AppCompatActivity {
 
-    TextView mCallbackText;
-    private OCRClient mOcrClient;
+    private ClientManager mOcrClient;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
-        mCallbackText = (TextView) findViewById(R.id.callbackTextView);
-        mOcrClient = new OCRClient(this, mCallbackText);
+        mOcrClient = new ClientManager(this, (TextView) findViewById(R.id.callbackTextView));
     }
 
     @Override
