@@ -111,11 +111,21 @@ public class OCRClient {
 
         @Override
         public void handleMessage(Message msg) {
+            Bundle mBundle = (Bundle) msg.obj;
             switch (msg.what) {
                 case ServiceOperations.MSG_DO_OCR:
-                    Bundle mBundle = (Bundle) msg.obj;
-                    mCallbackText.setText("Received from service: " + mBundle.getString("ocrText"));
+                    mCallbackText.setText("OCRService: " + mBundle.getString("text"));
                     break;
+                case ServiceOperations.MSG_OCR_RESULT:
+                    mCallbackText.setText("OCRService: " + mBundle.getString("text"));
+                    break;
+                case ServiceOperations.MSG_REGISTER_CLIENT:
+                    mCallbackText.setText("OCRService: " + mBundle.getString("text"));
+                    break;
+                case ServiceOperations.MSG_UNREGISTER_CLIENT:
+                    mCallbackText.setText("OCRService: " + mBundle.getString("text"));
+                    break;
+
                 default:
                     super.handleMessage(msg);
             }
