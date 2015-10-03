@@ -7,6 +7,7 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
@@ -20,7 +21,8 @@ import android.widget.Toast;
 
 public class OCRClient {
 
-
+    final String testFilePath = Environment.getExternalStorageDirectory()
+            + "/ocr.jpg";
     final Messenger mClient = new Messenger(new IncomingHandler());
     private final ContextWrapper mContextWrapper;
 
@@ -62,7 +64,7 @@ public class OCRClient {
         try {
             if (mService != null) {
                 Bundle mBundle = new Bundle();
-                mBundle.putString("name", mContextWrapper.getResources().getString(R.string.app_name));
+                mBundle.putString("name", testFilePath);
                 Message msg = Message.obtain(null, ServiceOperations.MSG_DO_OCR, mBundle);
                 mService.send(msg);
             }
