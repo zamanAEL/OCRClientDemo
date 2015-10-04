@@ -16,5 +16,9 @@
     <string name="remote_service_disconnected">remote_service_disconnected</string>
     <string name="servicePackageName">co.celloscope.services</string>
     <string name="serviceFullyQualifiedClassName">co.celloscope.services.OCRService</string>
+    <string name="action_connect">Connect</string>
+    <string name="action_register">Register</string>
+    <string name="action_unregister">Unregister</string>
+    <string name="action_disconnect">Disconnect</string>
 
 </resources>

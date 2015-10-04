@@ -30,15 +30,20 @@ public class ClientActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         switch (item.getItemId()) {
-            case R.id.action_bind:
-                mOcrClient.doBindService();
+            case R.id.action_connect:
+                mOcrClient.connectService();
                 return true;
-            case R.id.action_unbind:
-                mOcrClient.doUnbindService();
+            case R.id.action_register:
+                mOcrClient.registerClient();
                 return true;
             case R.id.action_ocr:
                 mOcrClient.doOcr();
                 return true;
+            case R.id.action_unregister:
+                mOcrClient.unregisterClient();
+                return true;
+            case R.id.action_disconnect:
+                mOcrClient.disconnectService();
             default:
                 return super.onOptionsItemSelected(item);
         }

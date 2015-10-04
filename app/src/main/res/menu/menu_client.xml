@@ -2,13 +2,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools" tools:context=".Client">
     <item
-        android:id="@+id/action_bind"
-        android:title="@string/action_bind"
+        android:id="@+id/action_connect"
+        android:title="@string/action_connect"
         android:orderInCategory="100"
         app:showAsAction="never" />
     <item
-        android:id="@+id/action_unbind"
-        android:title="@string/action_unbind"
+        android:id="@+id/action_register"
+        android:title="@string/action_register"
         android:orderInCategory="100"
         app:showAsAction="never" />
     <item
@@ -16,5 +16,14 @@
         android:title="@string/action_ocr"
         android:orderInCategory="100"
         app:showAsAction="never" />
-
+    <item
+        android:id="@+id/action_unregister"
+        android:title="@string/action_unregister"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_disconnect"
+        android:title="@string/action_disconnect"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
 </menu>
