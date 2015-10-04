@@ -48,7 +48,7 @@ public class ClientManager {
                 e.printStackTrace();
             }
         } else {
-            this.mTextView.setText("Service is not connected");
+            Toast.makeText(mClientContext, "Service is not connected", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -65,7 +65,7 @@ public class ClientManager {
                 Toast.makeText(mClientContext, e.getMessage(), Toast.LENGTH_LONG).show();
             }
         } else {
-            this.mTextView.setText("Service is not registered");
+            Toast.makeText(mClientContext, "Service is not registered", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -82,7 +82,7 @@ public class ClientManager {
             }
             mIsRegistered = false;
         } else {
-            this.mTextView.setText("Service is not registered");
+            Toast.makeText(mClientContext, "Service is not registered", Toast.LENGTH_LONG).show();
         }
     }
 
@@ -94,7 +94,7 @@ public class ClientManager {
             this.mServiceConnection.setmServiceMessenger(null);
             mIsRegistered = false;
         } else {
-            this.mTextView.setText("Service is not connected");
+            Toast.makeText(mClientContext, "Service is not connected", Toast.LENGTH_LONG).show();
         }
     }
 
