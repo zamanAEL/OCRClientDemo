@@ -98,7 +98,7 @@ public class ClientManager {
 
             } else {
                 Bundle mBundle = new Bundle();
-                mBundle.putString("name", data);
+                mBundle.putString("text", data);
                 msg = Message.obtain(null, what, mBundle);
             }
             this.connection.getMessenger().send(msg);
