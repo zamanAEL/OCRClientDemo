@@ -15,7 +15,13 @@ public class ClientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
-        mOcrClient = new ClientManager(this, (TextView) findViewById(R.id.callbackTextView));
+        //mOcrClient = new ClientManager(this, (TextView) findViewById(R.id.callbackTextView));
+        mOcrClient = new ClientManager(this, new Output() {
+            @Override
+            public void show(String result) {
+                ((TextView) findViewById(R.id.callbackTextView)).setText(result);
+            }
+        });
     }
 
     @Override

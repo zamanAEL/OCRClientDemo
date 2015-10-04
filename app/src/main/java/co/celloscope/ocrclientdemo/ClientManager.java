@@ -19,41 +19,41 @@ public class ClientManager {
     private final String testFilePath = Environment.getExternalStorageDirectory()
             + "/ocr.jpg";
     private final Context context;
-    private final TextView mTextView;
     boolean isRegistered;
     private final OCRServiceConnection connection;
 
-    private final Messenger cMessenger = new Messenger(new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            Bundle mBundle = ((Bundle) msg.obj);
-            switch (msg.what) {
 
-                case ServiceOperations.MSG_REGISTER_CLIENT:
-                    mTextView.setText("OCRService: " + mBundle.getString("text"));
-                    isRegistered = true;
-                    break;
-                case ServiceOperations.MSG_DO_OCR:
-                    mTextView.setText("OCRService: " + mBundle.getString("text"));
-                    break;
-                case ServiceOperations.MSG_OCR_RESULT:
-                    mTextView.setText("OCRService: " + mBundle.getString("text"));
-                    break;
-                case ServiceOperations.MSG_UNREGISTER_CLIENT:
-                    mTextView.setText("OCRService: " + mBundle.getString("text"));
-                    isRegistered = false;
-                    break;
+    private final Messenger cMessenger;
 
-                default:
-                    super.handleMessage(msg);
-            }
-        }
-    });
-
-    public ClientManager(Context context, TextView textView) {
+    public ClientManager(Context context, final Output output) {
         this.context = context;
-        this.mTextView = textView;
         connection = new OCRServiceConnection();
+        cMessenger = new Messenger(new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                Bundle mBundle = ((Bundle) msg.obj);
+                switch (msg.what) {
+
+                    case ServiceOperations.MSG_REGISTER_CLIENT:
+                        output.show("OCRService: " + mBundle.getString("text"));
+                        isRegistered = true;
+                        break;
+                    case ServiceOperations.MSG_DO_OCR:
+                        output.show("OCRService: " + mBundle.getString("text"));
+                        break;
+                    case ServiceOperations.MSG_OCR_RESULT:
+                        output.show("OCRService: " + mBundle.getString("text"));
+                        break;
+                    case ServiceOperations.MSG_UNREGISTER_CLIENT:
+                        output.show("OCRService: " + mBundle.getString("text"));
+                        isRegistered = false;
+                        break;
+
+                    default:
+                        super.handleMessage(msg);
+                }
+            }
+        });
     }
 
     void connectService() {
