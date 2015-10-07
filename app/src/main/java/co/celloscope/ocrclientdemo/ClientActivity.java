@@ -20,22 +20,22 @@ public class ClientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client);
-        ((Button)this.findViewById(R.id.ocrButton)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mOcrClient.connectService();
-                mOcrClient.registerClient();
-                mOcrClient.doOcr(testFilePath);
-//                mOcrClient.unregisterClient();
-//                mOcrClient.disconnectService();
-            }
-        });
         mOcrClient = new ClientManager(this, new Output() {
             @Override
             public void show(String result) {
                 ((TextView) findViewById(R.id.callbackTextView)).setText(result);
             }
         });
+        mOcrClient.connectService();
+        ((Button)this.findViewById(R.id.ocrButton)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mOcrClient.doOcr(testFilePath);
+//                mOcrClient.disconnectService();
+            }
+        });
+
     }
 
     @Override
@@ -54,13 +54,13 @@ public class ClientActivity extends AppCompatActivity {
                 mOcrClient.connectService();
                 return true;
             case R.id.action_register:
-                mOcrClient.registerClient();
+                //mOcrClient.registerClient();
                 return true;
             case R.id.action_ocr:
                 mOcrClient.doOcr(testFilePath);
                 return true;
             case R.id.action_unregister:
-                mOcrClient.unregisterClient();
+                //mOcrClient.unregisterClient();
                 return true;
             case R.id.action_disconnect:
                 mOcrClient.disconnectService();

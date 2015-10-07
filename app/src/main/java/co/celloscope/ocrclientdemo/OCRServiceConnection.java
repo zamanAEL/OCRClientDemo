@@ -8,9 +8,10 @@ import android.os.Messenger;
 public class OCRServiceConnection implements ServiceConnection {
 
     private Messenger messenger;
+    private final ServiceConnectionStatus serviceConnectionStatus;
 
-    void setMessenger(Messenger svcMessenger) {
-        this.messenger = svcMessenger;
+    public OCRServiceConnection(ServiceConnectionStatus serviceConnectionStatus) {
+        this.serviceConnectionStatus = serviceConnectionStatus;
     }
 
     Messenger getMessenger() {
@@ -28,10 +29,12 @@ public class OCRServiceConnection implements ServiceConnection {
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         this.messenger = new Messenger(service);
+        serviceConnectionStatus.onServiceConnected();
     }
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
         this.disconnect();
+        serviceConnectionStatus.onServiceDisConnected();
     }
 }

@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class ClientManager {
+public class ClientManager implements ServiceConnectionStatus {
 
     private final Context context;
     boolean isRegistered;
@@ -25,7 +25,7 @@ public class ClientManager {
 
     public ClientManager(Context context, final Output output) {
         this.context = context;
-        connection = new OCRServiceConnection();
+        connection = new OCRServiceConnection(this);
         cMessenger = new Messenger(new Handler() {
             @Override
             public void handleMessage(Message msg) {
@@ -62,7 +62,7 @@ public class ClientManager {
         context.bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
-    void registerClient() {
+    private void registerClient() {
         if (this.connection.isConnected()) {
             this.sendMessage(ServiceOperations.MSG_REGISTER_CLIENT, null);
         } else {
@@ -79,7 +79,7 @@ public class ClientManager {
     }
 
 
-    void unregisterClient() {
+    private void unregisterClient() {
         if (this.connection.isConnected() && isRegistered) {
             this.sendMessage(ServiceOperations.MSG_UNREGISTER_CLIENT, null);
         } else {
@@ -121,4 +121,13 @@ public class ClientManager {
         }
     }
 
+    @Override
+    public void onServiceConnected() {
+        this.registerClient();
+    }
+
+    @Override
+    public void onServiceDisConnected() {
+
+    }
 }
