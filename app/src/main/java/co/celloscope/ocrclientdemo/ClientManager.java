@@ -16,8 +16,6 @@ import android.widget.Toast;
 
 public class ClientManager {
 
-    private final String testFilePath = Environment.getExternalStorageDirectory()
-            + "/ocr.jpg";
     private final Context context;
     boolean isRegistered;
     private final OCRServiceConnection connection;
@@ -72,9 +70,9 @@ public class ClientManager {
         }
     }
 
-    void doOcr() {
+    void doOcr(String filePath) {
         if (this.connection.isConnected() && isRegistered) {
-            this.sendMessage(ServiceOperations.MSG_DO_OCR, testFilePath);
+            this.sendMessage(ServiceOperations.MSG_DO_OCR, filePath);
         } else {
             Toast.makeText(context, "Service is not connected or registered", Toast.LENGTH_SHORT).show();
         }

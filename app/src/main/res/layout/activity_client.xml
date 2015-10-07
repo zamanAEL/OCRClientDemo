@@ -9,9 +9,19 @@
     tools:context=".Client">
 
     <TextView
+        android:id="@+id/callbackTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world"
-        android:id="@+id/callbackTextView"/>
+        android:layout_alignParentTop="true"
+        android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/ocrButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/action_ocr" />
+
 
 </RelativeLayout>
